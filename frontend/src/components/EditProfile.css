@@ -1,0 +1,124 @@
+.settings-wrapper {
+  padding: 2rem;
+  position: relative;
+  margin-left: 220px;
+  margin-right: 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.settings-card {
+  display: flex;
+  gap: 2rem;
+  background-color: var(--card-bg, #fff);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+body.dark .settings-card {
+  --card-bg: #1f1f1f;
+  color: white;
+}
+
+.left-section {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex: 1;
+}
+
+.right-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-label {
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-field {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: inherit;
+  color: inherit;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.avatar-root.large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ddd;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 0.5rem;
+
+}
+
+.save-button {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 12rem;
+}
+
+.save-button:hover {
+  background-color: #3730a3;
+}
+
+.logout-button {
+  bottom: 20px;
+  right: 30px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  width: 8rem;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #b91c1c;
+}
