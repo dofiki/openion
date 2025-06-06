@@ -1,9 +1,10 @@
 import React from 'react'
+import EditProfile from '../components/EditProfile.jsx'
 
 function SettingPage() {
   return (
     <div>
-      settings ::
+      <EditProfile />
     </div>
   )
 }

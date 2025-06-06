@@ -1,0 +1,86 @@
+.follower-panel {
+  width: 220px;
+  right: 0;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  border-left: 1px solid var(--sidebar-border);
+  color: var(--text-color);
+  padding: 20px 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: fixed;
+  top:0;
+  padding-top: 6rem;
+
+
+}
+
+.ScrollAreaRoot {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.ScrollAreaViewport {
+  padding-right: 10px;
+  height: 100%;
+}
+
+.ScrollAreaScrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.ScrollAreaThumb {
+  background-color: var(--thumb-bg);
+  border-radius: 4px;
+  flex: 1;
+}
+
+.list-group {
+  margin-bottom: 24px;
+}
+
+.list-title {
+  font-size: 1rem;
+  font-weight: bold;
+  border-bottom: 1px solid var(--sidebar-border);
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.name-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.name-item {
+  font-size: 0.95rem;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-icon {
+  color: var(--icon-color);
+}
+
+/* Dark/light theme variables */
+body.light {
+  --sidebar-bg: #fafafa;
+  --sidebar-border: #ddd;
+  --text-color: #222;
+  --thumb-bg: #bbb;
+  --icon-color: #333;
+}
+
+body.dark {
+  --sidebar-bg: #181818;
+  --sidebar-border: #333;
+  --text-color: #eee;
+  --thumb-bg: #555;
+  --icon-color: #ccc;
+}

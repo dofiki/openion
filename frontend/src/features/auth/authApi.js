@@ -17,7 +17,7 @@ export async function register({ username, email, password }) {
   const res = await fetch(`${API_URL}/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, email, password, bio: "" }), // add bio or empty
+    body: JSON.stringify({ username, email, password, bio: "" }), 
     credentials: "include"
   });
 
