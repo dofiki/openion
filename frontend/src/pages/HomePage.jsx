@@ -1,9 +1,11 @@
-import Feed from '../components/Feed.jsx';
+import React from 'react'
 
 function HomePage() {
   return (
-      <Feed />
+    <div>
+      home
+    </div>
   )
 }
 
-export default HomePage;
+export default HomePage

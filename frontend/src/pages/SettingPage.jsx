@@ -1,9 +1,9 @@
-import EditProfile from "../components/EditProfile"
+import React from 'react'
 
 function SettingPage() {
   return (
     <div>
-      <EditProfile />
+      settings ::
     </div>
   )
 }

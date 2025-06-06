@@ -6,7 +6,8 @@ function configurePassport(passport) {
   passport.use(
     new LocalStrategy(async (username, password, done) => {
       try {
-        const user = await User.findOne({ username }); 
+        // Include hash and salt explicitly
+        const user = await User.findOne({ username }).select('+hash +salt');
         if (!user) return done(null, false, { message: "User not found" });
 
         const isValid = validatePassword(password, user.hash, user.salt);
@@ -25,7 +26,7 @@ function configurePassport(passport) {
 
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = await User.findById(id); 
+      const user = await User.findById(id);
       done(null, user);
     } catch (error) {
       done(error);

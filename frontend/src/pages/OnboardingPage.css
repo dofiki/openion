@@ -1,0 +1,44 @@
+.onboarding-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #000000;
+  color: white;
+}
+
+.left-panel,
+.right-panel {
+  width: 100%;
+  padding: 1rem;
+  background-color: black;
+}
+
+.right-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width:990px) {
+  .onboarding-container {
+    flex-direction: row;
+  }
+
+  .left-panel {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+  }
+
+  .right-panel {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+  }
+}

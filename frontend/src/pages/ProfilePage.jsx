@@ -1,8 +1,10 @@
-import Profile from '../components/Profile.jsx';
+import React from 'react'
 
 function ProfilePage() {
   return (
-      <Profile />
+    <div>
+      profile
+    </div>
   )
 }
 
