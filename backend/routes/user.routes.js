@@ -7,13 +7,16 @@ import {
     followUser,
     unfollowUser,
     getFollowers,
-    getFollowing
+    getFollowing,
+    whoAmI
 } from "../controllers/user.controllers.js";
 import { isAuthenticated } from "../middlewares/isAuthenticated.js";
 
 const router = Router();
 
 router.get("/", getAllUsers);
+
+router.get("/me",isAuthenticated, whoAmI)
 
 router.get("/:id/followers", getFollowers);
 router.get("/:id/following", getFollowing);

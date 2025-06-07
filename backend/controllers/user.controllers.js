@@ -144,3 +144,8 @@ export const getFollowing = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+export const whoAmI = async (req, res) => {
+   if (!req.user) return res.status(401).json({ message: 'Not authenticated' });
+   return res.json({ _id: req.user._id });
+}

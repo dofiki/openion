@@ -7,7 +7,7 @@ function EditProfile() {
   const [user, setUser] = useState({
     name: 'John Doe',
     bio: 'MMA enthusiast and tech geek.',
-    photo: 'https://via.placeholder.com/100',
+    photo: '',
   });
 
   const handleChange = (field) => (e) => {

@@ -4,10 +4,12 @@ import { FiSettings, FiUser } from 'react-icons/fi';
 import { BsSun, BsMoon } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import './NavBar.css';
+import  useAuthStore  from '../store/store.js'; // Adjust the import path as needed
 
 function NavBar() {
   const navigate = useNavigate();
-
+  const user = useAuthStore(state => state.user);
+  const userId = user?._id;
   const [darkMode, setDarkMode] = useState(() => {
     // Read initial state from localStorage
     const stored = localStorage.getItem('darkMode');
@@ -54,7 +56,7 @@ function NavBar() {
         <button
           className="icon-button"
           title="Profile"
-          onClick={() => navigate('/profile')}
+          onClick={() => navigate(`/profile/${userId}`)}
           style={{ padding: 0, borderRadius: '50%' }}
         >
           <Avatar.Root className="avatar-root">

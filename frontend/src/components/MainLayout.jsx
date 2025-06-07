@@ -4,6 +4,7 @@ import './MainLayout.css'; // Optional layout styles
 import NavBar from './NavBar';
 import FollowerPanel from './FollowerPanel';
 
+
 export default function MainLayout({ children }) {
   return (
     <div className="main-layout">

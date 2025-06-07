@@ -8,7 +8,9 @@ import OnboardingPage from "../pages/OnboardingPage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx"; 
 import MainLayout from "../components/MainLayout.jsx";
 
+
 export default function Router() {
+
   return (
     <Routes>
       <Route path="/onboarding" element={<OnboardingPage />} />
@@ -23,7 +25,7 @@ export default function Router() {
         } 
       />
       <Route 
-        path="/profile" 
+        path="/profile/:id" 
         element={
           <ProtectedRoute>
               <MainLayout>
