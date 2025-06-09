@@ -1,6 +1,5 @@
-import React from 'react'
 import Login from '../features/auth/Login.jsx'
-import BrandPanel from '../features/auth/BrandPanel.jsx'
+import BrandPanel from '../components/BrandPanel.jsx'
 import "./OnboardingPage.css"
 
 

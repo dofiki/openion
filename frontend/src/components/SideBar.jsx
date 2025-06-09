@@ -5,14 +5,13 @@ import { FiEdit2, FiSettings, FiUser, FiX} from 'react-icons/fi';
 import { CgFeed } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
 import './SideBar.css';
-import  useAuthStore  from '../store/store.js'; // Adjust the import path as needed
-  
+import  useAuthStore  from '../store/store.js'; 
 function Sidebar({ userName = 'dofiki' }) {
   const navigate = useNavigate();
   const [postContent, setPostContent] = useState('');
   const user = useAuthStore(state => state.user);
   const userId = user?._id;
-  {console.log("userId", userId)}
+
   return (
     <aside className="sidebar">
       <div

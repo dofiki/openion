@@ -5,6 +5,9 @@
   margin-right: 220px;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  margin-top: 5rem;
+  height: 100vh;
 }
 
 .settings-card {
@@ -15,6 +18,7 @@
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: background-color 0.3s ease;
+  height: 20rem;
 }
 
 body.dark .settings-card {

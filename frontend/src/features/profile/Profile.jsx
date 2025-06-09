@@ -1,3 +1,4 @@
+// src/profile/Profile.jsx
 import React, { useEffect, useState } from 'react';
 import * as Avatar from '@radix-ui/react-avatar';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
@@ -6,7 +7,8 @@ import { FaRegHeart, FaRegComment } from 'react-icons/fa';
 import { FiUser } from 'react-icons/fi';
 import './Profile.css';
 
-import { fetchCurrentUser, fetchUserProfile, followUser } from './Api.js'; // adjust path if needed
+import { fetchCurrentUser, fetchUserProfile, followUser } from './profileApi.js';
+import Loader from '../../components/Loader.jsx';
 
 function Profile({ userId }) {
   const [isDark, setIsDark] = useState(document.body.classList.contains('dark'));
@@ -15,7 +17,6 @@ function Profile({ userId }) {
   const [isFollowing, setIsFollowing] = useState(false);
   const [isOwnProfile, setIsOwnProfile] = useState(false);
 
-  // Theme detection
   useEffect(() => {
     const observer = new MutationObserver(() => {
       setIsDark(document.body.classList.contains('dark'));
@@ -24,7 +25,6 @@ function Profile({ userId }) {
     return () => observer.disconnect();
   }, []);
 
-  // Fetch profile + current user
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -56,13 +56,13 @@ function Profile({ userId }) {
     }
   };
 
-  if (!profile) return <div>Loading...</div>;
+  if (!profile) return <Loader isDark={isDark} />;
 
   return (
     <div className={`profile-page ${isDark ? 'dark' : 'light'}`}>
       <div className="profile-info">
         <Avatar.Root className="profile-avatar">
-          <Avatar.Image className="avatar-image" src="" alt="Profile" />
+          <Avatar.Image className="avatar-image" src={profile.avatarUrl || ''} alt="Profile" />
           <Avatar.Fallback className="avatar-fallback">
             <FiUser size={40} />
           </Avatar.Fallback>

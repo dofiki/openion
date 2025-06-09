@@ -3,7 +3,7 @@ const API_URL = "http://localhost:5000/api/users";
 export const fetchUserProfile = async (userId) => {
   return fetch(`${API_URL}/${userId}`, {
     method: 'GET',
-    credentials: 'include', // sends the session cookie
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },
