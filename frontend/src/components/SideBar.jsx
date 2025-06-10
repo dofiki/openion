@@ -23,7 +23,7 @@ function Sidebar({ userName = 'dofiki' }) {
         <Avatar.Root className="avatar-root">
           <Avatar.Image
             className="avatar-image"
-            src="https://via.placeholder.com/60"
+            src=""
             alt="User Avatar"
           />
           <Avatar.Fallback className="avatar-fallback">

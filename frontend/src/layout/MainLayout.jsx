@@ -1,8 +1,8 @@
 // src/components/MainLayout.jsx
-import Sidebar from './SideBar'; // Or Navbar if that's what you want
+import Sidebar from '../components/SideBar'; // Or Navbar if that's what you want
 import './MainLayout.css'; // Optional layout styles
-import NavBar from './NavBar';
-import FollowerPanel from './FollowerPanel';
+import NavBar from '../components/NavBar';
+import FollowerPanel from '../components/FollowerPanel';
 
 
 export default function MainLayout({ children }) {

@@ -1,0 +1,93 @@
+.postbox {
+  background-color: var(--post-bg, #1e1e1e);
+  color: var(--text-color, #eaeaea);
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 35rem;
+}
+
+.postbox-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.postbox-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: #444;
+  margin-right: 0.75rem;
+}
+
+.postbox-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.postbox-avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #555;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.postbox-info {
+  flex: 1;
+}
+
+.postbox-username {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.postbox-time {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.postbox-options {
+  cursor: pointer;
+  color: #999;
+}
+
+.postbox-content {
+  padding: 0.75rem;
+  background-color: var(--post-bg, #1e1e1e);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.postbox-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.postbox-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.postbox-btn:hover {
+  color: #fff;
+}
+
+body.dark {
+  --post-bg: #1e1e1e;
+  --text-color: #eaeaea;
+}
+
+body.light {
+  --post-bg: #ffffff;
+  --text-color: #222222;
+}

@@ -1,18 +1,14 @@
 import React from 'react';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import './Feed.css';
+import PostBox from '../../ui/PostBox';
 
 function Feed() {
   return (
     <div className="feed-container">
       <ScrollArea.Root className="FeedScrollRoot">
         <ScrollArea.Viewport className="FeedScrollViewport">
-          {Array.from({ length: 20 }).map((_, index) => (
-            <div key={index} className="feed-box">
-              <h3>Post #{index + 1}</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-          ))}
+          <PostBox />
         </ScrollArea.Viewport>
         <ScrollArea.Scrollbar orientation="vertical" className="FeedScrollbar">
           <ScrollArea.Thumb className="FeedThumb" />

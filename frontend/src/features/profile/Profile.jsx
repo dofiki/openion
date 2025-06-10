@@ -7,8 +7,9 @@ import { FaRegHeart, FaRegComment } from 'react-icons/fa';
 import { FiUser } from 'react-icons/fi';
 import './Profile.css';
 
-import { fetchCurrentUser, fetchUserProfile, followUser } from './profileApi.js';
-import Loader from '../../components/Loader.jsx';
+import { fetchCurrentUser, fetchUserProfile, followUser, unfollowUser } from './profileApi.js';
+import Loader from '../../ui/Loader.jsx';
+import PostBox from '../../ui/PostBox.jsx';
 
 function Profile({ userId }) {
   const [isDark, setIsDark] = useState(document.body.classList.contains('dark'));
@@ -43,18 +44,23 @@ function Profile({ userId }) {
 
     fetchData();
   }, [userId]);
-
-  const handleFollow = async () => {
-    try {
+const handleToggleFollow = async () => {
+  try {
+    if (isFollowing) {
+      await unfollowUser(userId);
+      setIsFollowing(false);
+    } else {
       await followUser(userId);
-      const updatedProfile = await fetchUserProfile(userId);
-      setProfile(updatedProfile);
       setIsFollowing(true);
-    } catch (err) {
-      console.error('Follow error:', err);
-      alert(err.message);
     }
-  };
+    const updatedProfile = await fetchUserProfile(userId);
+    setProfile(updatedProfile);
+  } catch (err) {
+    console.error('Follow/Unfollow error:', err);
+    alert(err.message);
+  }
+};
+
 
   if (!profile) return <Loader isDark={isDark} />;
 
@@ -77,13 +83,13 @@ function Profile({ userId }) {
         </p>
 
         {!isOwnProfile && (
-          <button
-            className="follow-button"
-            onClick={handleFollow}
-            disabled={isFollowing}
-          >
+        <button
+        className="follow-button"
+        onClick={handleToggleFollow}
+        >
             {isFollowing ? 'Following' : 'Follow'}
-          </button>
+        </button>
+
         )}
       </div>
 
@@ -92,13 +98,7 @@ function Profile({ userId }) {
         <ScrollArea.Root className="PostsScrollRoot">
           <ScrollArea.Viewport className="PostsScrollViewport">
             {[...Array(10)].map((_, index) => (
-              <Card key={index} className="post-card">
-                <p>This is post #{index + 1} — some engaging content goes here.</p>
-                <div className="post-actions">
-                  <FaRegHeart />
-                  <FaRegComment />
-                </div>
-              </Card>
+              <PostBox />
             ))}
           </ScrollArea.Viewport>
           <ScrollArea.Scrollbar orientation="vertical" className="PostsScrollbar">

@@ -63,3 +63,14 @@ export const fetchCurrentUser = async () => {
     throw err;
   }
 };
+
+export const unfollowUser = async (userId)=>{
+  const response = await fetch(`${API_URL}/${userId}/unfollow`, {
+    method: 'POST',
+    credentials: 'include',
+  });
+  if (!response.ok) {
+    throw new Error('Failed to unfollow user');
+  }
+  return response.json();
+}

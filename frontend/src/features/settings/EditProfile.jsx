@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { fetchUserProfile, fetchCurrentUser } from '../profile/profileApi.js';
 import { pushUpdate, logOut } from './settingsApi.js';
-import Toaster from '../../components/Toaster.jsx';
+import Toaster from '../../ui/Toaster.jsx';
 
 function EditProfile() {
   const [user, setUser] = useState(null);

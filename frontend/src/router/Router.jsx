@@ -6,7 +6,7 @@ import SettingPage from "../pages/SettingPage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 import OnboardingPage from "../pages/OnboardingPage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx"; 
-import MainLayout from "../components/MainLayout.jsx";
+import MainLayout from "../layout/MainLayout.jsx";
 
 
 export default function Router() {

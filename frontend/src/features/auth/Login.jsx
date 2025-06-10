@@ -9,7 +9,7 @@ import {
   isValidEmail,
   isValidPassword,
 } from '../../utils/validate.js';
-import Toaster from '../../components/Toaster.jsx';
+import Toaster from '../../ui/Toaster.jsx';
 
 export default function Login() {
   const [isRegistering, setIsRegistering] = useState(false);
