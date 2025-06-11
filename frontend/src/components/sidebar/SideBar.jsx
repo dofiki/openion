@@ -1,19 +1,51 @@
 import React, { useState } from 'react';
 import * as Avatar from '@radix-ui/react-avatar';
 import * as Dialog from '@radix-ui/react-dialog';
-import { FiEdit2, FiSettings, FiUser, FiX} from 'react-icons/fi';
+import { FiEdit2, FiSettings, FiUser, FiX } from 'react-icons/fi';
 import { CgFeed } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
 import './SideBar.css';
-import  useAuthStore  from '../store/store.js'; 
+import useAuthStore from '../../store/store.js';
+import { createPost } from './postApi.js'; // Import your API function
+import Toaster from '../../ui/Toaster.jsx';
+
 function Sidebar({ userName = 'dofiki' }) {
   const navigate = useNavigate();
   const [postContent, setPostContent] = useState('');
   const user = useAuthStore(state => state.user);
   const userId = user?._id;
 
+  // Dialog open state (optional, if you want to control manually)
+  const [open, setOpen] = useState(false);
+  
+  const [toastMessage, setToastMessage] = useState('');
+  const [openToast, setOpenToast] = useState(false);
+
+  const showToast = (msg) => {
+    setToastMessage(msg);
+    setOpenToast(true);
+  };
+
+
+  async function handleCreatePost() {
+    if (!postContent.trim()) {
+      showToast("Post content can't be empty");
+      return;
+    }
+
+    try {
+      const newPost = await createPost({ content: postContent });
+      showToast("Post created!");
+      setPostContent('');
+      setOpen(false); 
+    } catch (error) {
+      showToast("Failed to create post: " + error.message);
+    }
+  }
+
   return (
     <aside className="sidebar">
+
       <div
         className="profile-section"
         onClick={() => navigate(`/profile/${userId}`)}
@@ -21,11 +53,7 @@ function Sidebar({ userName = 'dofiki' }) {
         title="Go to Profile"
       >
         <Avatar.Root className="avatar-root">
-          <Avatar.Image
-            className="avatar-image"
-            src=""
-            alt="User Avatar"
-          />
+          <Avatar.Image className="avatar-image" src="" alt="User Avatar" />
           <Avatar.Fallback className="avatar-fallback">
             <FiUser size={22} />
           </Avatar.Fallback>
@@ -34,8 +62,7 @@ function Sidebar({ userName = 'dofiki' }) {
       </div>
 
       <nav className="sidebar-nav">
-        {/* Create Post Modal Trigger and Content */}
-        <Dialog.Root>
+        <Dialog.Root open={open} onOpenChange={setOpen}>
           <Dialog.Trigger asChild>
             <button className="sidebar-button">
               <FiEdit2 size={20} />
@@ -43,10 +70,10 @@ function Sidebar({ userName = 'dofiki' }) {
             </button>
           </Dialog.Trigger>
 
-          <button className='sidebar-button' onClick={() => navigate('/')}> 
-           <CgFeed  size={20}/>
-           <span>Feed</span>
-        </button>
+          <button className='sidebar-button' onClick={() => navigate('/')}>
+            <CgFeed size={20} />
+            <span>Feed</span>
+          </button>
 
           <Dialog.Portal>
             <Dialog.Overlay className="modal-overlay" />
@@ -54,11 +81,7 @@ function Sidebar({ userName = 'dofiki' }) {
               <div className="modal-header">
                 <div className="user-info">
                   <Avatar.Root className="modal-avatar-root">
-                    <Avatar.Image
-                      className="modal-avatar-image"
-                      src=""
-                      alt="User Avatar"
-                    />
+                    <Avatar.Image className="modal-avatar-image" src="" alt="User Avatar" />
                     <Avatar.Fallback className="modal-avatar-fallback">
                       <FiUser />
                     </Avatar.Fallback>
@@ -83,10 +106,7 @@ function Sidebar({ userName = 'dofiki' }) {
                 </Dialog.Close>
                 <button
                   className="modal-btn post"
-                  onClick={() => {
-                    console.log('Post content:', postContent);
-                    setPostContent('');
-                  }}
+                  onClick={handleCreatePost}
                 >
                   Post
                 </button>
@@ -99,13 +119,16 @@ function Sidebar({ userName = 'dofiki' }) {
           <FiSettings size={20} />
           <span>Settings</span>
         </button>
-
       </nav>
-
+      <Toaster message={toastMessage} open={openToast} setOpen={setOpenToast} />
       <div className="sidebar-footer">
         <small>© 2025 opponion. All rights reserved.</small>
       </div>
+      
+
     </aside>
+
+    
   );
 }
 

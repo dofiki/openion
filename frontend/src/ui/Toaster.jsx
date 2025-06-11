@@ -10,7 +10,8 @@ export default function Toaster({ message, open, setOpen }) {
         className="toast-root"
         duration={2000}  
       >
-        <Toast.Title className="toast-title">{message}</Toast.Title>
+        <Toast.Title className="toast-title">
+          {message}</Toast.Title>
       </Toast.Root>
       <Toast.Viewport className="toast-viewport" />
     </Toast.Provider>

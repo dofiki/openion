@@ -74,3 +74,4 @@ export const unfollowUser = async (userId)=>{
   }
   return response.json();
 }
+
