@@ -1,4 +1,5 @@
 const API_URL = "http://localhost:5000/api/users";
+const API_URL_2 = "http://localhost:5000/api/posts/user"
 
 export const fetchUserProfile = async (userId) => {
   return fetch(`${API_URL}/${userId}`, {
@@ -75,3 +76,24 @@ export const unfollowUser = async (userId)=>{
   return response.json();
 }
 
+export const getUserPosts = async (userId) => {
+  try {
+    const res = await fetch(`${API_URL_2}/${userId}`, {
+      method: 'GET',
+      credentials: 'include', 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message || 'Failed to fetch user posts');
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error('Error fetching user posts:', error.message);
+    throw error;
+  }
+};

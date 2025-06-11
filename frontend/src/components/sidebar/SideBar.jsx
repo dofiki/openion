@@ -9,6 +9,7 @@ import useAuthStore from '../../store/store.js';
 import { createPost } from './postApi.js'; // Import your API function
 import Toaster from '../../ui/Toaster.jsx';
 
+
 function Sidebar({ userName = 'dofiki' }) {
   const navigate = useNavigate();
   const [postContent, setPostContent] = useState('');
@@ -20,7 +21,7 @@ function Sidebar({ userName = 'dofiki' }) {
   
   const [toastMessage, setToastMessage] = useState('');
   const [openToast, setOpenToast] = useState(false);
-
+  const triggerRefresh = useAuthStore(state => state.triggerRefresh);
   const showToast = (msg) => {
     setToastMessage(msg);
     setOpenToast(true);
@@ -35,6 +36,7 @@ function Sidebar({ userName = 'dofiki' }) {
 
     try {
       const newPost = await createPost({ content: postContent });
+      triggerRefresh(); //
       showToast("Post created!");
       setPostContent('');
       setOpen(false); 
