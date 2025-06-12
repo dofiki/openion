@@ -149,3 +149,24 @@ export const whoAmI = async (req, res) => {
    if (!req.user) return res.status(401).json({ message: 'Not authenticated' });
    return res.json({ _id: req.user._id });
 }
+
+// Example user.controllers.js addition
+export const searchUsers = async (req, res) => {
+  try {
+    const { username } = req.query;
+  console.log("Searching for username:", username);
+    if (!username) {
+      return res.status(400).json({ message: "Username query param is required" });
+    }
+
+    // Assuming you have a User model and you want case-insensitive partial match
+    const users = await User.find({
+      username: { $regex: username, $options: "i" }
+    }).select("_id username"); // select only needed fields
+
+    res.json({ users });
+  } catch (error) {
+    console.error("Error searching users:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
