@@ -25,3 +25,4 @@ export async function register({ username, email, password }) {
 
   return await res.json();
 }
+
