@@ -1,5 +1,5 @@
 import Login from '../features/auth/Login.jsx'
-import BrandPanel from '../components/BrandPanel.jsx'
+import BrandPanel from '../components/brandpanel/BrandPanel.jsx'
 import "./OnboardingPage.css"
 
 

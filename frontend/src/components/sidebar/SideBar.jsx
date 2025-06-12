@@ -6,17 +6,17 @@ import { CgFeed } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
 import './SideBar.css';
 import useAuthStore from '../../store/store.js';
-import { createPost } from './postApi.js'; // Import your API function
+import { createPost } from './postApi.js'; 
 import Toaster from '../../ui/Toaster.jsx';
 
 
-function Sidebar({ userName = 'dofiki' }) {
+function Sidebar() {
   const navigate = useNavigate();
   const [postContent, setPostContent] = useState('');
   const user = useAuthStore(state => state.user);
   const userId = user?._id;
+  const userName=user?.username;
 
-  // Dialog open state (optional, if you want to control manually)
   const [open, setOpen] = useState(false);
   
   const [toastMessage, setToastMessage] = useState('');
@@ -36,7 +36,7 @@ function Sidebar({ userName = 'dofiki' }) {
 
     try {
       const newPost = await createPost({ content: postContent });
-      triggerRefresh(); //
+      triggerRefresh(); 
       showToast("Post created!");
       setPostContent('');
       setOpen(false); 
@@ -124,7 +124,7 @@ function Sidebar({ userName = 'dofiki' }) {
       </nav>
       <Toaster message={toastMessage} open={openToast} setOpen={setOpenToast} />
       <div className="sidebar-footer">
-        <small>© 2025 opponion. All rights reserved.</small>
+        <small>© 2025 openion. All rights reserved.</small>
       </div>
       
 
