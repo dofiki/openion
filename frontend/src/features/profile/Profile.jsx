@@ -82,7 +82,6 @@ function Profile({ userId }) {
       setProfile(updatedProfile);
     } catch (err) {
       console.error('Follow/Unfollow error:', err);
-      alert(err.message);
     }
   };
 

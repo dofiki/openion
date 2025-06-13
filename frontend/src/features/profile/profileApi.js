@@ -19,7 +19,7 @@ export const fetchUserProfile = async (userId) => {
       console.error('Error fetching user profile:', err);
       throw err;
     });
-}       
+};
 
 export const followUser = async (targetUserId) => {
   try {
@@ -74,7 +74,7 @@ export const unfollowUser = async (userId)=>{
     throw new Error('Failed to unfollow user');
   }
   return response.json();
-}
+};
 
 export const getUserPosts = async (userId) => {
   try {

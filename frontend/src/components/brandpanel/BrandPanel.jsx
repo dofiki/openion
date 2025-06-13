@@ -7,7 +7,7 @@ export default function BrandPanel() {
     <div className="brand-panel">
       <div className="brand-content">
         <Heading size="8" as="h1" className="brand-title">
-          Welcome to Opponion
+          Welcome to Openion
         </Heading>
         <Text size="5" className="brand-subtitle">
           Share your opinions. Influence ideas. Connect with minds that matter.

@@ -1,3 +1,30 @@
+/* Theme Variables */
+body.light {
+  --sidebar-bg: #fafafa;
+  --sidebar-border: #ddd;
+  --text-color: #222;
+  --thumb-bg: #bbb;
+  --icon-color: #333;
+}
+
+body.dark {
+  --sidebar-bg: #181818;
+  --sidebar-border: #333;
+  --text-color: #eee;
+  --thumb-bg: #555;
+  --icon-color: #ccc;
+}
+
+/* Base Reset */
+body {
+  background-color: var(--sidebar-bg);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Panel */
 .follower-panel {
   width: 220px;
   right: 0;
@@ -7,14 +34,20 @@
   color: var(--text-color);
   padding: 20px 15px;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-y: auto; /* scrollable vertically */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
   position: fixed;
-  top:0;
+  top: 0;
   padding-top: 6rem;
-
-
 }
 
+/* Hide scrollbar for WebKit browsers */
+.follower-panel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scroll Area */
 .ScrollAreaRoot {
   width: 100%;
   height: 100%;
@@ -38,6 +71,7 @@
   flex: 1;
 }
 
+/* List Section */
 .list-group {
   margin-bottom: 24px;
 }
@@ -68,19 +102,48 @@
   color: var(--icon-color);
 }
 
-/* Dark/light theme variables */
-body.light {
-  --sidebar-bg: #fafafa;
-  --sidebar-border: #ddd;
-  --text-color: #222;
-  --thumb-bg: #bbb;
-  --icon-color: #333;
+/* Accordion Styles */
+.AccordionRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-body.dark {
-  --sidebar-bg: #181818;
-  --sidebar-border: #333;
-  --text-color: #eee;
-  --thumb-bg: #555;
-  --icon-color: #ccc;
+.AccordionItem {
+  border: 1px solid var(--sidebar-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--sidebar-bg);
+}
+
+.AccordionTrigger {
+  padding: 0.75rem 1rem;
+  background-color: var(--sidebar-border);
+  color: var(--text-color);
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+  border: none;
+  width: 100%;
+}
+
+.AccordionTrigger:hover {
+  background-color: var(--thumb-bg);
+}
+
+.AccordionContent {
+  padding: 0.75rem 1rem;
+  background-color: var(--sidebar-bg);
+  border-top: 1px solid var(--sidebar-border);
+}
+
+.name-item.clickable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 1rem;
+  padding: 0.6rem;
+}
+
+.name-item.clickable:hover {
+  background-color: #414141;
 }

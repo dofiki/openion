@@ -43,7 +43,6 @@ function NavBar() {
         navigate(`/profile/${results[0]._id}`);
         setSearchTerm('');
       } else {
-        alert('No user found with that username.');
       }
     }
   };

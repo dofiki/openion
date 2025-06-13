@@ -149,12 +149,11 @@ export const whoAmI = async (req, res) => {
    if (!req.user) return res.status(401).json({ message: 'Not authenticated' });
    return res.json({ _id: req.user._id });
 }
-
 // Example user.controllers.js addition
 export const searchUsers = async (req, res) => {
   try {
     const { username } = req.query;
-  console.log("Searching for username:", username);
+    console.log("Searching for username:", username);
     if (!username) {
       return res.status(400).json({ message: "Username query param is required" });
     }
