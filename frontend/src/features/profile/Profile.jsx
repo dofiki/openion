@@ -14,7 +14,7 @@ import {
 } from './profileApi.js';
 
 import Loader from '../../ui/Loader.jsx';
-import PostBox from '../../ui/PostBox.jsx';
+import PostBox from '../../ui/postbox/PostBox.jsx';
 
 function Profile({ userId }) {
   const [isDark, setIsDark] = useState(document.body.classList.contains('dark'));
@@ -25,7 +25,6 @@ function Profile({ userId }) {
   const [postDatas, setPostDatas] = useState([]);
   const refreshKey = useAuthStore(state => state.refreshKey);
 
-  // Watch for dark mode changes
   useEffect(() => {
     const observer = new MutationObserver(() => {
       setIsDark(document.body.classList.contains('dark'));
@@ -34,7 +33,6 @@ function Profile({ userId }) {
     return () => observer.disconnect();
   }, []);
 
-  // Load profile and relationship status
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -54,7 +52,6 @@ function Profile({ userId }) {
     fetchData();
   }, [userId]);
 
-  // Fetch posts by user
   useEffect(() => {
     const fetchPosts = async () => {
       try {

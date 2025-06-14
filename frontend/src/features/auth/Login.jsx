@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import {
   isValidUsername,
-  isValidEmail,
+  isValidEmail, 
   isValidPassword,
 } from '../../utils/validate.js';
 import Toaster from '../../ui/Toaster.jsx';
@@ -104,7 +104,9 @@ export default function Login() {
       } else if (error.message.includes('500')) {
         showToast('Server error. Please try again later.');
       } else {
-        showToast(error.message || (isRegistering ? 'Registration failed. Please try again.' : 'Login failed. Please try again.'));
+        showToast(error.message ||
+           (isRegistering ? 'Registration failed. Please try again.' : 
+            'Login failed. Please try again.'));
       }
     } finally {
       setIsLoading(false);

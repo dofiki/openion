@@ -75,7 +75,9 @@
   border: none;
   color: #ccc;
   cursor: pointer;
-  text-decoration: underline;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .postbox-btn:hover {
@@ -90,4 +92,11 @@ body.dark {
 body.light {
   --post-bg: #ffffff;
   --text-color: #222222;
+}
+
+.liketxt {
+  text-decoration: none !important;
+  font-size: 0.8rem;
+  color: rgb(255, 255, 255);
+
 }

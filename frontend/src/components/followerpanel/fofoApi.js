@@ -12,7 +12,7 @@ export const getFollowing = async (userId) => {
         }
 
         const data = await res.json();
-        return data.following; // returning the array directly
+        return data.following; 
     } catch (error) {
         console.error("Error fetching followers:", error);
         return [];
@@ -31,7 +31,7 @@ export const getFollowers = async (userId) => {
         }
 
         const data = await res.json();
-        return data.followers; // returning the array directly
+        return data.followers; 
     } catch (error) {
         console.error("Error fetching followers:", error);
         return [];

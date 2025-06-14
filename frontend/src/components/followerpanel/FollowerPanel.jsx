@@ -4,7 +4,7 @@ import { FiUser } from 'react-icons/fi';
 import { getFollowers, getFollowing } from './fofoApi';
 import './FollowerPanel.css';
 import useAuthStore from '../../store/store.js';
-import { useNavigate } from 'react-router-dom'; // <-- import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 function FollowerPanel() {
   const [followers, setFollowers] = useState([]);
@@ -13,7 +13,7 @@ function FollowerPanel() {
 
   const user = useAuthStore((state) => state.user);
   const userId = user?._id;
-  const navigate = useNavigate(); // <-- create navigate function
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     if (!userId) return;

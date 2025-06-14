@@ -12,7 +12,8 @@ import { isAuthenticated } from "../middlewares/isAuthenticated.js";
 const router = Router();
 
 router.get("/", getAllComments);    
-router.get("/post/:postId", getAllCommentFromPost);         
+router.get("/post/:postId", getAllCommentFromPost);   
+      
 router.get("/:id", getCommentById);
 router.post("/", isAuthenticated, createComment);
 router.patch("/:id", isAuthenticated, updateCommentById);

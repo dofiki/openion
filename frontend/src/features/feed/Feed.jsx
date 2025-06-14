@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import './Feed.css';
-import PostBox from '../../ui/PostBox.jsx';
+import PostBox from '../../ui/postbox/PostBox.jsx';
 import { getFeed } from './feedApi.js';
 import useAuthStore from '../../store/store.js';
 import Loader from '../../ui/Loader.jsx'; // adjust path if needed
