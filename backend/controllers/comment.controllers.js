@@ -40,34 +40,27 @@ export const getCommentById = async (req, res) => {
 };
 
 export const createComment = async (req, res) => {
-    try {
-        const { postId, text } = req.body;
-        const userId = req.user?.id; // assuming user is set by `isAuthenticated` middleware
+  try {
+    const { postId, text } = req.body;
+    const userId = req.user._id; // Assuming you're using middleware to get authenticated user
 
-        if (!postId || !text) {
-            return res.status(400).json({ message: "postId and text are required" });
-        }
+    const newComment = new Comment({
+      post: postId,
+      author: userId,
+      text,
+    });
 
-        // Optional: Check if the post exists
-        const post = await Post.findById(postId);
-        if (!post) {
-            return res.status(404).json({ message: "Post not found" });
-        }
+    await newComment.save();
 
-        const newComment = new Comment({
-            post: postId,
-            text,
-            author: userId,
-        });
+    // 🔥 Populate author details before sending
+    const populatedComment = await Comment.findById(newComment._id).populate("author", "username avatar");
 
-        const savedComment = await newComment.save();
-
-        res.status(201).json(savedComment);
-    } catch (error) {
-        console.error("Error creating comment:", error);
-        res.status(500).json({ message: "Internal server error" });
-    }
-}
+    res.status(201).json(populatedComment);
+  } catch (error) {
+    console.error("Error creating comment:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 
 export const updateCommentById = async (req, res) => {
     try {

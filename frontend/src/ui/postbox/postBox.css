@@ -15,9 +15,9 @@
 }
 
 .postbox-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 9999px;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
   overflow: hidden;
   background-color: #444;
   margin-right: 0.75rem;
@@ -99,4 +99,97 @@ body.light {
   font-size: 0.8rem;
   color: rgb(255, 255, 255);
 
+}
+
+.commentbox {
+  background-color: var(--post-bg, #1e1e1e);
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.commentbox-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.comment-input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.comment-add-btn {
+  padding: 0.5rem 1rem;
+  background-color: #444;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.comment-add-btn:hover {
+  background-color: #666;
+}
+
+.comment-list {
+  margin-top: 1rem;
+}
+
+.comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.comment-content {
+  background-color: #2b2b2b;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.comment-date {
+  color: #aaa;
+}
+
+.dropdown-content {
+  background-color: #2a2a2a;
+  color: white;
+  border-radius: 6px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.dropdown-item {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #3a3a3a;
+}
+
+.dark-background {
+  background-color: #1e1e1e;   
+  border: none;
+}
+
+.dark-background svg {
+  color: #fff;              
 }

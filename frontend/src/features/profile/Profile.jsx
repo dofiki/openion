@@ -101,11 +101,6 @@ function Profile({ userId }) {
         <h2 className="username">{profile.username}</h2>
         <p className="bio">{profile.bio || 'No bio yet'}</p>
 
-        <p className="stats">
-          <span className="stat-item">Followers: {profile.followersCount}</span>
-          <span className="stat-item">Following: {profile.followingCount}</span>
-        </p>
-
         {!isOwnProfile && (
           <button className="follow-button" onClick={handleToggleFollow}>
             {isFollowing ? 'Following' : 'Follow'}
